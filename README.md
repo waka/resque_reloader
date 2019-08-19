@@ -1,17 +1,17 @@
-# Resque::Reloader
+# ResqueReloader
 
-Resqueワーカのソースコードを更新したときにワーカプロセスにも反映するgem.
+This gem work with hot reload resque worker.
 
 ## Motivation
 
-Resqueワーカを修正中に何回もResqueを再起動するのがだるい.
+I hate to restart Resque process many times while fixing a Resque worker.
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'resque-reloader'
+gem 'resque_reloader'
 ```
 
 And then execute:
@@ -20,17 +20,12 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install resque-reloader
+    $ gem install resque_reloader
 
 ## Usage
 
-Add this code to initializer:
-
-```ruby
-Resque::Reloader.configure do |conf|
-  conf.worker_dir = Rails.root.join('app', 'workers')
-end
-Resque::Reloader.watch!
+```
+$ env QUEUE="*" bundle exec rake resque:work_with_reload
 ```
 
 ## Development
